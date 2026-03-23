@@ -141,7 +141,7 @@ export default function ObreirosClient({ obreiros: inicial }: { obreiros: Obreir
             <button key={c} onClick={() => toggleCargo(c)}
               className={`px-3 py-1 text-xs rounded-full font-medium transition-colors ${
                 filtrosCargo.includes(c) ? CARGO_COLORS[c] + ' ring-2 ring-offset-1 ring-current' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'}`}>
-              {CARGO_LABELS[c]}
+              {CARGO_LABELS[c as keyof typeof CARGO_LABELS]}
             </button>
           ))}
         </div>
@@ -152,7 +152,7 @@ export default function ObreirosClient({ obreiros: inicial }: { obreiros: Obreir
         <div key={cargo} className="mb-6">
           <div className="flex items-center gap-2 mb-3">
             <span className={`text-xs font-semibold px-2.5 py-1 rounded-full ${CARGO_COLORS[cargo as Cargo]}`}>
-              {CARGO_LABELS[cargo as Cargo]}s
+              {CARGO_LABELS[cargo as keyof typeof CARGO_LABELS]}s
             </span>
             <span className="text-xs text-gray-400">{lista.length}</span>
           </div>
