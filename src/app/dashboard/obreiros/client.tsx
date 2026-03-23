@@ -34,7 +34,7 @@ export default function ObreirosClient({ obreiros: inicial }: { obreiros: Obreir
 
   const obreirosFiltrados = obreiros.filter(o => {
     const nomeMatch = o.nome_completo.toLowerCase().includes(busca.toLowerCase()) ||
-      `${CARGO_PREFIX[o.cargo]} ${o.nome_completo}`.toLowerCase().includes(busca.toLowerCase())
+      `${CARGO_PREFIX[o.cargo as keyof typeof CARGO_PREFIX]} ${o.nome_completo}`.toLowerCase().includes(busca.toLowerCase())
     const cargoMatch = filtrosCargo.length === 0 || filtrosCargo.includes(o.cargo)
     const statusMatch =
       filtroStatus === 'todos' ? true :
@@ -166,7 +166,7 @@ export default function ObreirosClient({ obreiros: inicial }: { obreiros: Obreir
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-1.5 mb-1">
                       <span className={`text-xs font-medium px-1.5 py-0.5 rounded ${CARGO_COLORS[o.cargo]}`}>
-                        {CARGO_PREFIX[o.cargo]}
+                        {CARGO_PREFIX[o.cargo as keyof typeof CARGO_PREFIX]}
                       </span>
                       {o.bloqueado && (
                         <span className="text-xs bg-red-100 text-red-700 px-1.5 py-0.5 rounded font-medium">
@@ -235,7 +235,7 @@ export default function ObreirosClient({ obreiros: inicial }: { obreiros: Obreir
                 <select value={form.cargo} onChange={e => setForm(p => ({ ...p, cargo: e.target.value as Cargo }))}
                   className="w-full px-3 py-2 text-sm border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-400">
                   {CARGOS.map(c => (
-                    <option key={c} value={c}>{CARGO_PREFIX[c]} {CARGO_LABELS[c]}</option>
+                    <option key={c} value={c}>{CARGO_PREFIX[c as keyof typeof CARGO_PREFIX]} {CARGO_LABELS[c as keyof typeof CARGO_LABELS]}</option>
                   ))}
                 </select>
               </div>

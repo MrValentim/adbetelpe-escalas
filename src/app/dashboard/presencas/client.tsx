@@ -107,7 +107,7 @@ export default function PresencasClient({ periodos, cultos: inicial, periodoAtua
                     <div key={e.id} className="px-5 py-3 flex items-center gap-3">
                       <div className="flex-1 min-w-0">
                         <p className="text-sm font-medium text-gray-800">
-                          {CARGO_PREFIX[e.obreiro?.cargo]} {e.obreiro?.nome_completo}
+                          {CARGO_PREFIX[e.obreiro?.cargo as keyof typeof CARGO_PREFIX]} {e.obreiro?.nome_completo}
                         </p>
                         {e.justificativa_falta && (
                           <p className="text-xs text-red-600 mt-0.5 italic">{e.justificativa_falta}</p>
@@ -157,7 +157,7 @@ export default function PresencasClient({ periodos, cultos: inicial, periodoAtua
             <div className="p-5 space-y-3">
               <p className="text-sm text-gray-600">
                 Informe o motivo da ausência de{' '}
-                <strong>{CARGO_PREFIX[modalAberto.co?.obreiro?.cargo]} {modalAberto.co?.obreiro?.nome_completo}</strong>.
+                <strong>{CARGO_PREFIX[modalAberto.co?.obreiro?.cargo as keyof typeof CARGO_PREFIX]} {modalAberto.co?.obreiro?.nome_completo}</strong>.
               </p>
               <textarea
                 value={form.justificativa}
