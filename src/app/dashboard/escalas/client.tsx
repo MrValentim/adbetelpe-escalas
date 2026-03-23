@@ -7,7 +7,7 @@ import { Plus, X, Check, AlertCircle, Calendar, ChevronDown, Trash2, UserPlus } 
 import { format, parseISO } from 'date-fns'
 import { ptBR } from 'date-fns/locale'
 
-const DIAS = ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb']
+const DIAS = ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'SÃ¡b']
 
 interface Props {
   periodos: EscalaPeriodo[]
@@ -45,7 +45,7 @@ export default function EscalasClient({ periodos, periodoAtualId, cultos: inicia
     return obreiros.filter(o => tipoSelecionado.cargos_permitidos.includes(o.cargo))
   }, [tipoSelecionado, obreiros])
 
-  // Filtra obreiros para escalar (culto específico)
+  // Filtra obreiros para escalar (culto especÃ­fico)
   const obreirosParaEscalar = useMemo(() => {
     if (!modalEscalar) return obreiros
     const tc = modalEscalar.tipo_culto
@@ -90,7 +90,7 @@ export default function EscalasClient({ periodos, periodoAtualId, cultos: inicia
       .insert({ culto_id: cultoId, obreiro_id: obreiroId, funcao })
 
     if (error) {
-      // Mostra a mensagem amigável do banco (conflito de data ou cargo)
+      // Mostra a mensagem amigÃ¡vel do banco (conflito de data ou cargo)
       const msg = error.message.includes('Conflito') ? error.message
         : error.message.includes('exige cargo') ? error.message
         : 'Erro ao escalar obreiro.'
@@ -127,7 +127,7 @@ export default function EscalasClient({ periodos, periodoAtualId, cultos: inicia
       <div className="flex items-center justify-between mb-6">
         <div>
           <h1 className="text-2xl font-semibold text-gray-900">Escalas</h1>
-          <p className="text-gray-500 text-sm mt-0.5">{cultos.length} culto{cultos.length !== 1 ? 's' : ''} no período</p>
+          <p className="text-gray-500 text-sm mt-0.5">{cultos.length} culto{cultos.length !== 1 ? 's' : ''} no perÃ­odo</p>
         </div>
         <button onClick={() => setModalCulto(true)} disabled={!periodoId}
           className="flex items-center gap-2 bg-brand-600 hover:bg-brand-800 disabled:opacity-50 text-white text-sm font-medium px-4 py-2 rounded-lg transition-colors">
@@ -135,7 +135,7 @@ export default function EscalasClient({ periodos, periodoAtualId, cultos: inicia
         </button>
       </div>
 
-      {/* Seletor de período + filtro congregação */}
+      {/* Seletor de perÃ­odo + filtro congregaÃ§Ã£o */}
       <div className="flex flex-col sm:flex-row gap-3 mb-5">
         <div className="relative flex-1">
           <select value={periodoId ?? ''} onChange={e => setPeriodoId(e.target.value)}
@@ -147,7 +147,7 @@ export default function EscalasClient({ periodos, periodoAtualId, cultos: inicia
         <div className="relative sm:w-52">
           <select value={filtroCong} onChange={e => setFiltroConk(e.target.value)}
             className="w-full appearance-none px-4 py-2.5 pr-8 text-sm border border-gray-200 rounded-xl bg-white focus:outline-none focus:ring-2 focus:ring-brand-400">
-            <option value="">Todas as congregações</option>
+            <option value="">Todas as congregaÃ§Ãµes</option>
             {congregacoes.map(c => <option key={c.id} value={c.id}>{c.nome}</option>)}
           </select>
           <ChevronDown size={14} className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none" />
@@ -167,13 +167,13 @@ export default function EscalasClient({ periodos, periodoAtualId, cultos: inicia
       {Object.keys(cultosPorData).length === 0 ? (
         <div className="text-center py-16 border-2 border-dashed border-gray-200 rounded-xl">
           <Calendar size={40} className="mx-auto mb-3 text-gray-300" />
-          <p className="text-gray-500 font-medium">Nenhum culto neste período</p>
-          <p className="text-gray-400 text-sm mt-1">Clique em "Adicionar culto" para começar a escala</p>
+          <p className="text-gray-500 font-medium">Nenhum culto neste perÃ­odo</p>
+          <p className="text-gray-400 text-sm mt-1">Clique em "Adicionar culto" para comeÃ§ar a escala</p>
         </div>
       ) : (
         Object.entries(cultosPorData).sort().map(([data, cultosData]) => (
           <div key={data} className="mb-6">
-            {/* Cabeçalho da data */}
+            {/* CabeÃ§alho da data */}
             <div className="flex items-center gap-3 mb-3">
               <div className="text-center bg-brand-600 text-white rounded-xl px-3 py-1.5 min-w-[60px]">
                 <p className="text-xs font-medium opacity-80">{DIAS[new Date(data + 'T12:00:00').getDay()]}</p>
@@ -199,7 +199,7 @@ export default function EscalasClient({ periodos, periodoAtualId, cultos: inicia
                         {c.hora && <span className="text-xs text-gray-400">{c.hora}</span>}
                         {c.tipo_culto?.restrito_cargo && (
                           <span className="text-xs text-amber-700 bg-amber-50 px-2 py-0.5 rounded">
-                            🎖 Apenas Pr./Ev./Pb.
+                            ðŸŽ– Apenas Pr./Ev./Pb.
                           </span>
                         )}
                       </div>
@@ -212,7 +212,7 @@ export default function EscalasClient({ periodos, periodoAtualId, cultos: inicia
                         {c.escalados?.map((e: any) => (
                           <span key={e.id} className="inline-flex items-center gap-1 text-xs bg-teal-50 text-teal-800 px-2.5 py-1 rounded-full">
                             {CARGO_PREFIX[e.obreiro?.cargo]} {e.obreiro?.nome_completo}
-                            {e.funcao === '2_pregador' && <span className="text-teal-500">(2°)</span>}
+                            {e.funcao === '2_pregador' && <span className="text-teal-500">(2Â°)</span>}
                           </span>
                         ))}
                       </div>
@@ -255,14 +255,14 @@ export default function EscalasClient({ periodos, periodoAtualId, cultos: inicia
                     className="w-full px-3 py-2 text-sm border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-400" />
                 </div>
                 <div>
-                  <label className="block text-xs font-medium text-gray-600 mb-1">Horário</label>
+                  <label className="block text-xs font-medium text-gray-600 mb-1">HorÃ¡rio</label>
                   <input type="time" value={formCulto.hora}
                     onChange={e => setFormCulto(p => ({ ...p, hora: e.target.value }))}
                     className="w-full px-3 py-2 text-sm border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-400" />
                 </div>
               </div>
               <div>
-                <label className="block text-xs font-medium text-gray-600 mb-1">Congregação *</label>
+                <label className="block text-xs font-medium text-gray-600 mb-1">CongregaÃ§Ã£o *</label>
                 <select value={formCulto.congregacao_id}
                   onChange={e => setFormCulto(p => ({ ...p, congregacao_id: e.target.value }))}
                   className="w-full px-3 py-2 text-sm border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-400">
@@ -278,12 +278,12 @@ export default function EscalasClient({ periodos, periodoAtualId, cultos: inicia
                 </select>
                 {tipoSelecionado?.restrito_cargo && (
                   <p className="text-xs text-amber-700 mt-1.5 flex items-center gap-1">
-                    <AlertCircle size={12} /> Santa Ceia: apenas Pastores, Evangelistas e Presbíteros
+                    <AlertCircle size={12} /> Santa Ceia: apenas Pastores, Evangelistas e PresbÃ­teros
                   </p>
                 )}
               </div>
               <div>
-                <label className="block text-xs font-medium text-gray-600 mb-1">Observações</label>
+                <label className="block text-xs font-medium text-gray-600 mb-1">ObservaÃ§Ãµes</label>
                 <input value={formCulto.observacoes}
                   onChange={e => setFormCulto(p => ({ ...p, observacoes: e.target.value }))}
                   placeholder="Opcional..."
@@ -312,7 +312,7 @@ export default function EscalasClient({ periodos, periodoAtualId, cultos: inicia
               <div>
                 <h2 className="text-base font-semibold">Escalar obreiros</h2>
                 <p className="text-xs text-gray-500 mt-0.5">
-                  {modalEscalar.congregacao?.nome} · {format(parseISO(modalEscalar.data), "dd/MM/yyyy")} · {modalEscalar.tipo_culto?.nome}
+                  {modalEscalar.congregacao?.nome} Â· {format(parseISO(modalEscalar.data), "dd/MM/yyyy")} Â· {modalEscalar.tipo_culto?.nome}
                 </p>
               </div>
               <button onClick={() => { setModalEscalar(null); setErro('') }}><X size={18} className="text-gray-400" /></button>
@@ -337,7 +337,7 @@ export default function EscalasClient({ periodos, periodoAtualId, cultos: inicia
                         <span className="text-sm text-teal-800">
                           {CARGO_PREFIX[e.obreiro?.cargo]} {e.obreiro?.nome_completo}
                           <span className="text-xs text-teal-500 ml-1">
-                            {e.funcao === '1_pregador' ? '· 1° pregador' : e.funcao === '2_pregador' ? '· 2° pregador' : '· suporte'}
+                            {e.funcao === '1_pregador' ? 'Â· 1Â° pregador' : e.funcao === '2_pregador' ? 'Â· 2Â° pregador' : 'Â· suporte'}
                           </span>
                         </span>
                         <button onClick={() => removerEscalado(e.id, modalEscalar.id)}
@@ -354,13 +354,13 @@ export default function EscalasClient({ periodos, periodoAtualId, cultos: inicia
               {modalEscalar.tipo_culto?.restrito_cargo && (
                 <div className="mb-3 bg-amber-50 border border-amber-200 text-amber-700 text-xs rounded-lg px-3 py-2 flex items-center gap-1.5">
                   <AlertCircle size={12} />
-                  Santa Ceia: apenas Pastores, Evangelistas e Presbíteros
+                  Santa Ceia: apenas Pastores, Evangelistas e PresbÃ­teros
                 </div>
               )}
 
               <div className="space-y-2">
                 <div>
-                  <label className="block text-xs font-medium text-gray-600 mb-1">1° Pregador</label>
+                  <label className="block text-xs font-medium text-gray-600 mb-1">1Â° Pregador</label>
                   <div className="flex gap-2">
                     <select value={obreiro1} onChange={e => setObreiro1(e.target.value)}
                       className="flex-1 px-3 py-2 text-sm border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-400">
@@ -379,7 +379,7 @@ export default function EscalasClient({ periodos, periodoAtualId, cultos: inicia
                   </div>
                 </div>
                 <div>
-                  <label className="block text-xs font-medium text-gray-600 mb-1">2° Pregador (opcional)</label>
+                  <label className="block text-xs font-medium text-gray-600 mb-1">2Â° Pregador (opcional)</label>
                   <div className="flex gap-2">
                     <select value={obreiro2} onChange={e => setObreiro2(e.target.value)}
                       className="flex-1 px-3 py-2 text-sm border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-400">
