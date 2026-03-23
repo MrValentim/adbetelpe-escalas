@@ -1,60 +1,19 @@
-{
-  "name": "adbetelpe-escalas",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
-  },
-  "dependencies": {
-    "@radix-ui/react-avatar": "^1.1.0",
-    "@radix-ui/react-dialog": "^1.1.0",
-    "@radix-ui/react-dropdown-menu": "^2.1.0",
-    "@radix-ui/react-label": "^2.1.0",
-    "@radix-ui/react-select": "^2.1.0",
-    "@radix-ui/react-separator": "^1.1.0",
-    "@radix-ui/react-slot": "^1.1.0",
-    "@radix-ui/react-switch": "^1.1.0",
-    "@radix-ui/react-tabs": "^1.1.0",
-    "@radix-ui/react-toast": "^1.2.0",
-    "@radix-ui/react-tooltip": "^1.1.0",
-    "@supabase/ssr": "^0.5.0",
-    "@supabase/supabase-js": "^2.45.0",
-    "class-variance-authority": "^0.7.0",
-    "clsx": "^2.1.0",
-    "date-fns": "^3.6.0",
-    "date-fns-tz": "^3.1.0",
-    "lucide-react": "^0.400.0",
-    "next": "14.2.5",
-    "react": "^18.0.0",
-    "react-dom": "^18.0.0",
-    "react-hook-form": "^7.52.0",
-    "tailwind-merge": "^2.4.0",
-    "tailwindcss-animate": "^1.0.7",
-    "zod": "^3.23.0",
-    "@hookform/resolvers": "^3.9.0",
-    "@react-pdf/renderer": "^3.4.0"
-  },
-  "devDependencies": {
-    "@types/node": "^20.0.0",
-    "@types/react": "^18.0.0",
-    "@types/react-dom": "^18.0.0",
-    "autoprefixer": "^10.4.0",
-    "eslint": "^8.0.0",
-    "eslint-config-next": "14.2.5",
-    "postcss": "^8.4.0",
-    "tailwindcss": "^3.4.0",
-    "typescript": "^5.0.0"
-  }
-}
+{"name":"adbetelpe-escalas","version":"0.1.0","private":true,"scripts":{"dev":"next dev","build":"next build","start":"next start","lint":"next lint"},"dependencies":{"@radix-ui/react-avatar":"^1.1.0","@radix-ui/react-dialog":"^1.1.0","@radix-ui/react-dropdown-menu":"^2.1.0","@radix-ui/react-label":"^2.1.0","@radix-ui/react-select":"^2.1.0","@radix-ui/react-separator":"^1.1.0","@radix-ui/react-slot":"^1.1.0","@radix-ui/react-switch":"^1.1.0","@radix-ui/react-tabs":"^1.1.0","@radix-ui/react-toast":"^1.2.0","@radix-ui/react-tooltip":"^1.1.0","@supabase/ssr":"^0.5.0","@supabase/supabase-js":"^2.45.0","class-variance-authority":"^0.7.0","clsx":"^2.1.0","date-fns":"^3.6.0","date-fns-tz":"^3.1.0","lucide-react":"^0.400.0","next":"14.2.5","react":"^18.0.0","react-dom":"^18.0.0","react-hook-form":"^7.52.0","tailwind-merge":"^2.4.0","tailwindcss-animate":"^1.0.7","zod":"^3.23.0","@hookform/resolvers":"^3.9.0","@react-pdf/renderer":"^3.4.0"},"devDependencies":{"@types/node":"^20.0.0","@types/react":"^18.0.0","@types/react-dom":"^18.0.0","autoprefixer":"^10.4.0","eslint":"^8.0.0","eslint-config-next":"14.2.5","postcss":"^8.4.0","tailwindcss":"^3.4.0","typescript":"^5.0.0"}}
 ```
-
-Salva com **Ctrl+S** e fecha o Bloco de Notas.
 
 ---
 
-**Comando 2 — Enviar a correção para o GitHub**
+**3 — Salvar o arquivo**
+
+- Aperta **Ctrl+S**
+- Na janela que abrir, navegue até: `C:\Users\Fillip Valentim\OneDrive\AD Betel - Lista de Culto\Projeto Claude\adbetelpe`
+- Em **Nome do arquivo** digita: `package.json`
+- Em **Tipo** clica no dropdown e seleciona **Todos os arquivos (*.*)**
+- Clica em **Salvar**
+- Se perguntar se quer substituir, clica em **Sim**
+
+---
+
+**4 — No Prompt de Comando execute:**
 ```
-cd "C:\Users\Fillip Valentim\OneDrive\AD Betel - Lista de Culto\Projeto Claude\adbetelpe" && git add package.json && git commit -m "corrige package.json" && git push
+cd "C:\Users\Fillip Valentim\OneDrive\AD Betel - Lista de Culto\Projeto Claude\adbetelpe" && git add package.json && git commit -m "fix package.json" && git push
